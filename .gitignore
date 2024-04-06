@@ -2,5 +2,53 @@
 **/*.cache
 **/*.editorconfig
 
-# ignore vscode launch files
-*.vscode
+# .NET
+bin/
+obj/
+*.user
+*.vscode/
+*.vs/
+*.suo
+*.cache
+*.log
+*.jfm
+*.sbr
+*.pdb
+*.dll
+*.exe
+
+# Visual Studio Code specific files
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Nn][Yy]/
+out/
+build/
+*.app
+*.ipa
+*.xcarchive
+
+# NuGet
+packages/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider specific files
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper*/
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
