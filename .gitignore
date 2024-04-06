@@ -1,0 +1,6 @@
+# ignore cache files
+**/*.cache
+**/*.editorconfig
+
+# ignore vscode launch files
+*.vscode
