@@ -32,6 +32,11 @@ namespace CodeChallenge.Repositories
             return _employeeContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
         }
 
+        public int GetNumberOfReports(string id)
+        {
+            return 2;
+        }
+
         public Task SaveAsync()
         {
             return _employeeContext.SaveChangesAsync();

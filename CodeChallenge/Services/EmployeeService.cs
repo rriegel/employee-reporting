@@ -59,5 +59,15 @@ namespace CodeChallenge.Services
 
             return newEmployee;
         }
+
+        public int? GetNumberOfReports(string id)
+        {
+            if(!String.IsNullOrEmpty(id))
+            {
+                return _employeeRepository.GetNumberOfReports(id);
+            }
+
+            return null;
+        }
     }
 }
