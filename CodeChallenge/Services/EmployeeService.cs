@@ -60,7 +60,7 @@ namespace CodeChallenge.Services
             return newEmployee;
         }
 
-        public int? GetNumberOfReports(string id)
+        public ReportingStructure GetNumberOfReports(string id)
         {
             if(!String.IsNullOrEmpty(id))
             {
