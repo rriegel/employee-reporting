@@ -11,11 +11,14 @@ namespace CodeChallenge.Data
     public class EmployeeDataSeeder
     {
         private EmployeeContext _employeeContext;
+
+        private CompensationContext _compensationContext;
         private const String EMPLOYEE_SEED_DATA_FILE = "resources/EmployeeSeedData.json";
 
-        public EmployeeDataSeeder(EmployeeContext employeeContext)
+        public EmployeeDataSeeder(EmployeeContext employeeContext, CompensationContext compensationContext)
         {
             _employeeContext = employeeContext;
+            _compensationContext = compensationContext;
         }
 
         public async Task Seed()
