@@ -15,13 +15,11 @@ namespace CodeChallenge.Controllers
     {
         private readonly ILogger _logger;
         private readonly IEmployeeService _employeeService;
-        private readonly ICompensationService _compensationService;
 
-        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeService employeeService, ICompensationService compensationService)
+        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeService employeeService)
         {
             _logger = logger;
             _employeeService = employeeService;
-            _compensationService = compensationService;
         }
 
         [HttpPost]
@@ -72,42 +70,6 @@ namespace CodeChallenge.Controllers
                 return NotFound();
 
             return Ok(reportingStructure);
-        }
-
-        [HttpGet("compensation/{id}", Name = "getCompensationById")]
-        public IActionResult GetCompensationById(String id)
-        {
-            _logger.LogDebug($"Received employee compensation get request for '{id}'");
-
-            var compensation = _compensationService.GetById(id);
-
-            if (compensation == null)
-                return NotFound();
-
-            return Ok(compensation);
-        }
-
-        [HttpGet("compensationByEmployee/{employeeId}", Name = "getCompensationByEmployeeId")]
-        public IActionResult GetCompensationByEmployeeId(String employeeId)
-        {
-            _logger.LogDebug($"Received employee compensation get request for employee '{employeeId}'");
-
-            var compensation = _compensationService.GetByEmployeeId(employeeId);
-
-            if (compensation == null)
-                return NotFound();
-
-            return Ok(compensation);
-        }
-
-        [HttpPost("compensation/")]
-        public IActionResult CreateEmployeeCompensation([FromBody] Compensation compensation)
-        {
-            _logger.LogDebug($"Received compensation create request for '{compensation.Employee.FirstName} {compensation.Employee.LastName}'");
-
-            _compensationService.Create(compensation);
-
-            return CreatedAtRoute("getCompensationById", new { id = compensation.CompensationId }, compensation);
         }
     }
 }
