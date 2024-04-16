@@ -1,13 +1,19 @@
+# Ryan Riegel - Employee Reporting
+## Features
+- Reporting Structure endpoint `api/employee/numberOfReports/{id}` to retrieve filled out Employee objects along with their numberOfReports
+- Compensation endpoints to POST `api/compensation` and GET by employeeId `api/compensation/byEmployee/{employeeId}`
+- Integration tests for all new endpoints
+
+## How to Run
+- You can run this by executing `dotnet run` on the command line or in [Visual Studio Community Edition](https://www.visualstudio.com/downloads/).
+- You can run the unit tests by executing `dotnet test`
+
 # Mindex Coding Challenge
 ## What's Provided
 A simple [.Net 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) web application has been created and bootstrapped 
 with data. The application contains information about all employees at a company. On application start-up, an in-memory 
 database is bootstrapped with a serialized snapshot of the database. While the application runs, the data may be
 accessed and mutated in the database without impacting the snapshot.
-
-### How to Run
-You can run this by executing `dotnet run` on the command line or in [Visual Studio Community Edition](https://www.visualstudio.com/downloads/).
-
 
 ### How to Use
 The following endpoints are available to use:
