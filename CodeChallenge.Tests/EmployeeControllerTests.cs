@@ -71,6 +71,7 @@ namespace CodeCodeChallenge.Tests.Integration
             var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
             var expectedFirstName = "John";
             var expectedLastName = "Lennon";
+            var expectedDirectReportsLength = 2;
 
             // Execute
             var getRequestTask = _httpClient.GetAsync($"api/employee/{employeeId}");
@@ -79,8 +80,29 @@ namespace CodeCodeChallenge.Tests.Integration
             // Assert
             Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
             var employee = response.DeserializeContent<Employee>();
+
             Assert.AreEqual(expectedFirstName, employee.FirstName);
             Assert.AreEqual(expectedLastName, employee.LastName);
+            Assert.AreEqual(expectedDirectReportsLength, employee.DirectReports.Count);
+        }
+
+        [TestMethod]
+        public void GetEmployeeReportingStructure_Returns_Ok()
+        {
+            // Arrange
+            var employeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+            // var expectedFirstName = "John";
+            // var expectedLastName = "Lennon";
+            var expectedNumberOfReports = 4;
+
+            // Execute
+            var getRequestTask = _httpClient.GetAsync($"api/employee/numberOfReports/{employeeId}");
+            var response = getRequestTask.Result;
+            
+            // Assert
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            var reportingStructure = response.DeserializeContent<ReportingStructure>();
+            Assert.AreEqual(expectedNumberOfReports, reportingStructure.NumberOfReports);
         }
 
         [TestMethod]
